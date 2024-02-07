@@ -1,0 +1,5 @@
+output/*
+linux/*
+u-boot/*
+busybox/*
+toolchain/*
