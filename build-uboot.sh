@@ -2,6 +2,7 @@
 
 source export.sh
 
+
 make -C $UBOOT_SRC O=$UBOOT_OUT distclean
 make -C $UBOOT_SRC O=$UBOOT_OUT am335x_evm_defconfig
 make -C $UBOOT_SRC O=$UBOOT_OUT menuconfig

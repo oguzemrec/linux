@@ -21,8 +21,9 @@ export UBOOT_SRC=${PWD}/u-boot/
 export UBOOT_OUT=${PWD}/output/u-boot
 export BUSYBOX_SRC=${PWD}/busybox/
 export BUSYBOX_OUT=${PWD}/output/busybox
-export ROOT_FS=${PWD}/output/RootFS
+export ROOT_FS=${PWD}/output/rootfs
 export SYSROOT=`${CROSS_COMPILE}gcc --print-sysroot`
 export MODULES_DIR=${PWD}/output/modules
+export IMAGES_DIR=${PWD}/output/images
 
 echo "Environment variables for Linux Building have been set."
