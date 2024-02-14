@@ -1,6 +1,3 @@
-output/busybox/*
-output/images/*
-output/linux/*
-output/modules/*
-output/u-boot/*
+output/*
 toolchain/*
+uboot/

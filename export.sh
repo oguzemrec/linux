@@ -11,19 +11,32 @@ if ! (return 0 2>/dev/null); then
     exit 1
 fi
 
+# Scriptin bulunduğu dizini bul
+SCRIPT_DIR=$(dirname "$BASH_SOURCE")
+
+# Bulunan dizini mutlak yola çevir (gerekirse)
+SCRIPT_DIR_ABS=$(realpath "$SCRIPT_DIR")
+
 # Setting up environment variables
-export CC=${PWD}/toolchain/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-
-export ARCH=arm
-export CROSS_COMPILE=${CC}
-export KERNEL_SRC=${PWD}/linux/
-export KERNEL_OUT=${PWD}/output/linux
-export UBOOT_SRC=${PWD}/u-boot/
-export UBOOT_OUT=${PWD}/output/u-boot
-export BUSYBOX_SRC=${PWD}/busybox/
-export BUSYBOX_OUT=${PWD}/output/busybox
-export ROOT_FS=${PWD}/output/rootfs
+export CROSS_COMPILE=${SCRIPT_DIR_ABS}/toolchain/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-
+export CC=${CROSS_COMPILE}gcc
+export CXX=${CROSS_COMPILE}g++
+export AR=${CROSS_COMPILE}ar
 export SYSROOT=`${CROSS_COMPILE}gcc --print-sysroot`
-export MODULES_DIR=${PWD}/output/modules
-export IMAGES_DIR=${PWD}/output/images
+
+export ARCH=arm
+export KERNEL_SRC=${SCRIPT_DIR_ABS}/linux/
+export KERNEL_OUT=${SCRIPT_DIR_ABS}/output/linux
+export UBOOT_SRC=${SCRIPT_DIR_ABS}/u-boot/
+export UBOOT_OUT=${SCRIPT_DIR_ABS}/output/u-boot
+export BUSYBOX_SRC=${SCRIPT_DIR_ABS}/busybox/
+export BUSYBOX_OUT=${SCRIPT_DIR_ABS}/output/busybox
+export ROOT_FS=${SCRIPT_DIR_ABS}/output/rootfs
+export MODULES_DIR=${SCRIPT_DIR_ABS}/output/modules
+export PACKAGES_DIR=${SCRIPT_DIR_ABS}/packages
+export PACKAGES_OUT=${SCRIPT_DIR_ABS}/output/packages
+export IMAGES_DIR=${SCRIPT_DIR_ABS}/output/images
 
 echo "Environment variables for Linux Building have been set."
+
+# ${CROSS_COMPILE}readelf -a /home/oemre/workspace/beaglebone/output/rootfs/bin/bash | grep "Shared"

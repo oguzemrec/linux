@@ -1,0 +1,3 @@
+package kurulumlarinda ./configure dosyasi duzgun set edilmek zorunda.
+openssh icin /etc/ssh dizini tam secilmis olmuyor. Buildroot configurasyonu takip edilmeli ya da
+denedigim gibi orada derlenmeli
